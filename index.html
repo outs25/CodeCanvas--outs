@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCanvas - Showcase Front-End Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">CodeCanvas</div>
+                <nav class="nav">
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="#" class="nav-link">Browse</a>
+                    <a href="#" class="nav-link">Submit</a>
+                    <a href="#" class="nav-link">About</a>
+                    <a href="https://github.com/yourusername/codecanvas" class="btn-primary" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Showcase Your Front-End Creations</h1>
+                <p>Discover, share, and get inspired by amazing front-end projects from developers around the world. Join the community and showcase your creativity!</p>
+                <a href="#projects" class="btn-primary">Explore Projects</a>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="filters">
+                <h2><i class="fas fa-filter"></i> Filter Projects</h2>
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label for="difficulty">Difficulty:</label>
+                        <select id="difficulty">
+                            <option value="all">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <input type="checkbox" id="has-demo">
+                        <label for="has-demo">Has Open Issues</label>
+                    </div>
+                    <div class="filter-group">
+                        <input type="checkbox" id="has-readme">
+                        <label for="has-readme">Has README</label>
+                    </div>
+                    <button class="btn-secondary" id="apply-filters">Apply Filters</button>
+                    <button class="btn-secondary" id="reset-filters">Reset</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section" id="projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                </div>
+                <div class="projects-grid" id="projects-container" style="display: none;">
+                    <!-- Projects will be rendered here -->
+                </div>
+                <div class="empty-state" id="empty-state" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No projects found</h3>
+                    <p>Try adjusting your filters or contribute the first project!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 CodeCanvas. Open source project for the developer community.</p>
+            <p>Built with ❤️ for showcasing amazing front-end projects</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
