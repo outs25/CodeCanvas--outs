@@ -22,6 +22,10 @@
                     <a href="https://github.com/yourusername/codecanvas" class="btn-primary" target="_blank">
                         <i class="fab fa-github"></i> GitHub
                     </a>
+                    <button class="theme-toggle" id="darkModeToggle" aria-label="Toggle Theme">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+
                 </nav>
             </div>
         </div>
@@ -88,4 +92,29 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script>
+    const toggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    const icon = document.getElementById('themeIcon');
+
+    // Load preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-theme');
+        icon.textContent = '☀️'; // Sun in dark mode
+    } else {
+        icon.textContent = '🌙'; // Moon in light mode
+    }
+
+    toggle.addEventListener('click', () => {
+        body.classList.toggle('dark-theme');
+        const theme = body.classList.contains('dark-theme') ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+
+        // Update icon
+        icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+    });
+</script>
+
+
   </body>
