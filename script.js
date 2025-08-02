@@ -58,7 +58,7 @@ const sampleProjects = [
                 title: 'Expense Tracker App',
                 description: 'A simple and intuitive expense tracker app to monitor daily spending, manage budgets, and gain financial insights.',
                 repoUrl: 'https://github.com/example/portfolio',
-                demoUrl: 'https://expense-tracker-app-04.netlify.app/',
+                demoUrl: 'https://github.com/example/expense-tracker',
                 difficulty: 'Intermediate',
                 upvotes: 1,
                 hasDemo: true,
