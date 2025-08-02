@@ -243,6 +243,77 @@
             accent-color: #667eea;
         }
 
+        /* Search styles */
+        .search-group {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            color: #666;
+            z-index: 1;
+        }
+
+        .search-container input[type="text"] {
+            width: 100%;
+            padding: 12px 40px 12px 40px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--card-bg);
+            color: var(--text-card);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-container input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .clear-search {
+            position: absolute;
+            right: 8px;
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .clear-search:hover {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .dark-theme .search-container input[type="text"] {
+            border-color: #444;
+            background: var(--card-bg);
+            color: var(--text-card);
+        }
+
+        .dark-theme .search-container input[type="text"]:focus {
+            border-color: #667eea;
+        }
+
+        .dark-theme .clear-search:hover {
+            background-color: #444;
+            color: #fff;
+        }
+
         .btn-secondary {
             background: white;
             color: #667eea;
@@ -440,6 +511,10 @@
             .filter-controls {
                 flex-direction: column;
                 align-items: stretch;
+            }
+            
+            .search-group {
+                min-width: 100%;
             }
             
             .projects-grid {

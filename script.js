@@ -67,6 +67,8 @@ const sampleProjects = [
         const hasReadmeFilter = document.getElementById('has-readme');
         const applyFiltersBtn = document.getElementById('apply-filters');
         const resetFiltersBtn = document.getElementById('reset-filters');
+        const searchInput = document.getElementById('search-input');
+        const clearSearchBtn = document.getElementById('clear-search');
 
         // Initialize the app
         function init() {
@@ -87,6 +89,10 @@ const sampleProjects = [
         function setupEventListeners() {
             applyFiltersBtn.addEventListener('click', applyFilters);
             resetFiltersBtn.addEventListener('click', resetFilters);
+            
+            // Search functionality
+            searchInput.addEventListener('input', handleSearch);
+            clearSearchBtn.addEventListener('click', clearSearch);
             
             // Smooth scroll for explore button
             document.querySelector('a[href="#projects"]').addEventListener('click', (e) => {
@@ -186,6 +192,17 @@ const sampleProjects = [
             const difficulty = difficultyFilter.value;
             const needsDemo = hasDemoFilter.checked;
             const needsReadme = hasReadmeFilter.checked;
+            const searchTerm = searchInput.value.toLowerCase().trim();
+
+            // Apply search filter
+            if (searchTerm) {
+                filtered = filtered.filter(project => {
+                    const titleMatch = project.title.toLowerCase().includes(searchTerm);
+                    const descriptionMatch = project.description.toLowerCase().includes(searchTerm);
+                    const tagsMatch = project.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+                    return titleMatch || descriptionMatch || tagsMatch;
+                });
+            }
 
             if (difficulty !== 'all') {
                 filtered = filtered.filter(p => p.difficulty === difficulty);
@@ -202,11 +219,43 @@ const sampleProjects = [
             return filtered;
         }
 
+        // Handle search input with debounce
+        let searchTimeout;
+        function handleSearch() {
+            const searchTerm = searchInput.value.trim();
+            
+            // Show/hide clear button
+            if (searchTerm) {
+                clearSearchBtn.style.display = 'flex';
+            } else {
+                clearSearchBtn.style.display = 'none';
+            }
+            
+            // Clear previous timeout
+            clearTimeout(searchTimeout);
+            
+            // Debounce search to improve performance
+            searchTimeout = setTimeout(() => {
+                const filteredProjects = applyCurrentFilters();
+                renderProjects(filteredProjects);
+            }, 300);
+        }
+
+        // Clear search
+        function clearSearch() {
+            searchInput.value = '';
+            clearSearchBtn.style.display = 'none';
+            const filteredProjects = applyCurrentFilters();
+            renderProjects(filteredProjects);
+        }
+
         // Reset filters
         function resetFilters() {
             difficultyFilter.value = 'all';
             hasDemoFilter.checked = false;
             hasReadmeFilter.checked = false;
+            searchInput.value = '';
+            clearSearchBtn.style.display = 'none';
             renderProjects(sampleProjects);
         }
 
