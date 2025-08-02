@@ -60,10 +60,10 @@ const sampleProjects = [
                 repoUrl: 'https://github.com/example/portfolio',
                 demoUrl: 'https://github.com/example/expense-tracker',
                 difficulty: 'Intermediate',
-                upvotes: 1,
+                upvotes: 21,
                 hasDemo: true,
                 hasReadme: false,
-                previewImage: null,
+                previewImage: 'assets/Expense-Tracker-Preview.png',
                 tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
             }
 
