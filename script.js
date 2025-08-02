@@ -20,7 +20,7 @@ const sampleProjects = [
                 description: 'A responsive weather application with beautiful animations and detailed forecasts. Features location-based weather data and interactive charts.',
                 repoUrl: 'https://github.com/example/weather-dashboard',
                 demoUrl: 'https://example.github.io/weather-dashboard/',
-                difficulty: 'intermediate',
+                difficulty: 'Intermediate',
                 upvotes: 28,
                 hasDemo: true,
                 hasReadme: true,
@@ -52,7 +52,21 @@ const sampleProjects = [
                 hasReadme: true,
                 previewImage: null,
                 tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
+            },
+            {
+                id: 5,
+                title: 'Expense Tracker App',
+                description: 'A simple and intuitive expense tracker app to monitor daily spending, manage budgets, and gain financial insights.',
+                repoUrl: 'https://github.com/example/portfolio',
+                demoUrl: 'https://expense-tracker-app-04.netlify.app/',
+                difficulty: 'Intermediate',
+                upvotes: 1,
+                hasDemo: true,
+                hasReadme: false,
+                previewImage: null,
+                tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
             }
+
         ];
 
         // Store the current projects array
