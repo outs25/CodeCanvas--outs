@@ -65,8 +65,20 @@ const sampleProjects = [
                 hasReadme: false,
                 previewImage: 'assets/Expense-Tracker-Preview.png',
                 tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
-            }
-
+            },
+            {
+                id: 6,
+                title: "IMDb Clone",
+                description: 'A responsive IMDb clone showcasing popular movies with detailed info using TMDb API and modern frontend technologies.',
+                repoUrl: "https://github.com/Jils31/IMDB-clone",
+                demoUrl: "https://imdb-clone-seven-virid.vercel.app/",
+                difficulty: "intermediate",
+                upvotes: 21,
+                hasDemo: true,
+                hasReadme: true,
+                previewImage: "assets/image.png",
+                tags: ["REACT", "Tailwind CSS", "Responsive", "React-Router DOM"],
+            },
         ];
 
         // Store the current projects array
