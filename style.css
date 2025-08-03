@@ -489,6 +489,240 @@
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
+        /*REVIEW SECTION */
+
+
+        .reviews-section {
+         background-color: var(--bg-main);
+        }
+
+        #reviews-heading {
+          font-size: 2rem;
+          font-weight: 700;
+          color: white;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+          text-align: center;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+
+        .review-carousel {
+        padding: 2rem 0;
+        position: relative;
+        }
+
+        .review-section-title {
+          font-size: 2rem;
+          font-weight: 700;
+          color: var(--project-title-color);
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+
+        .swiper {
+          padding: 2rem 0;
+          overflow: visible;
+        }
+        .swiper-slide {
+          background-color: var(--card-bg);
+          border-radius: 20px;
+          padding: 2rem;
+          border: 3px solid black; 
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          gap: 1.25rem;
+          width: 280px;
+          min-height: 580px;
+          transition: transform 0.4s ease, box-shadow 0.4s ease;
+          background-clip: padding-box;
+        }
+
+        .swiper-slide:hover {
+          transform: scale(2);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Light & Dark mode support */
+        body.light .swiper-slide {
+          background-color: #ffffff;
+          border: 2px solid #000; 
+        }
+        body.dark .swiper-slide {
+          background-color: #000000;
+          border: 2px solid #ffffff; 
+        }
+
+        .slide-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          height: 100%;
+          gap: 1.5rem; 
+          padding: 1.25rem 0;
+        }
+
+        .avatar {
+          width: 150px; 
+          height: 150px;
+          border-radius: 50%;
+          object-fit:contain;
+          border: 3px solid var(--accent-color, #6c63ff);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+          margin-bottom: 0.1rem;
+          transition: transform 0.3s ease;
+        }
+        .avatar:hover {
+          transform: scale(1.05); 
+        }
+
+
+        .review-name {
+          font-size: 1.7rem; 
+          font-weight: 900;
+          color: var(--text-card, #111);
+          text-align: center;
+          margin: 0.25rem 0;
+          text-decoration-line: underline;
+        }
+
+        .rating {
+          font-size: 1.4rem;
+          color: gold;
+          letter-spacing: 0.2rem;
+           font-weight: 900;
+          text-align: center;
+          font-size: larger;
+        }
+
+        .review-role {
+          font-size: 1.1rem;
+          font-style: italic;
+          color: var(--text-muted, #8a8989);
+          text-align: center;
+          margin-bottom: 0.1rem;
+        }
+
+       
+        .testimonial {
+          font-size: 1.1rem; 
+          font-style: italic;
+          color: var(--text-card, #222);
+          line-height: 1.8; 
+          text-align: center;
+          padding: 0 1.2rem;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+          border: 2px solid black;
+          background-color: white;
+          padding: 35px;
+          border-radius: 300px;
+          transition: background 0.3s ease;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+          background: rgba(25, 25, 25, 0.7);
+        }
+
+       
+
+        @media (max-width: 1024px) {
+          .swiper-slide {
+            width: 90%;
+            min-height: 520px;
+            padding: 1.5rem;
+          }
+      
+          .avatar {
+            width: 110px;
+            height: 110px;
+          }
+      
+          .review-name {
+            font-size: 1.3rem;
+          }
+      
+          .review-role,
+          .testimonial {
+            font-size: 1rem;
+          }
+        }
+
+
+        @media (max-width: 768px) {
+          .swiper-slide {
+            width: 100%;
+            min-height: 480px;
+            padding: 1.25rem;
+            gap: 1rem;
+          }
+      
+          .slide-content {
+            gap: 1rem;
+            padding: 0.75rem 0;
+          }
+      
+          .avatar {
+            width: 100px;
+            height: 100px;
+          }
+      
+          .review-name {
+            font-size: 1.2rem;
+          }
+      
+          .review-role {
+            font-size: 0.95rem;
+          }
+      
+          .testimonial {
+            font-size: 0.95rem;
+            padding: 0 0.8rem;
+          }
+      
+          .swiper-button-next,
+          .swiper-button-prev {
+            padding: 25px;
+            border-width: 1px;
+          }
+        }
+
+
+        @media (max-width: 480px) {
+          .swiper-slide {
+            width: 100%;
+            padding: 1rem;
+            min-height: 460px;
+          }
+      
+          .avatar {
+            width: 90px;
+            height: 90px;
+          }
+      
+          .review-name {
+            font-size: 1.1rem;
+          }
+      
+          .testimonial {
+            font-size: 0.9rem;
+            line-height: 1.6;
+          }
+      
+          .swiper-button-next,
+          .swiper-button-prev {
+            display: none; /* Optional: hide buttons on very small screens */
+          }
+        }
+
+
         /* Footer */
         .footer {
             background: rgba(0, 0, 0, 0.8);
