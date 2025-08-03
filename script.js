@@ -324,12 +324,23 @@ function validateForm() {
     return false;
   }
 
-  document.getElementById("form-status").style.display = "block";
+  // Show the overlay
+  const overlay = document.getElementById("message-overlay");
+  overlay.style.opacity = "1";
+  overlay.style.pointerEvents = "auto";
 
+  // Hide the overlay after 3 seconds
+  setTimeout(() => {
+    overlay.style.opacity = "0";
+    overlay.style.pointerEvents = "none";
+  }, 3000);
+
+  // Clear form
   document.getElementById("contact-form").reset();
 
-  return false; // Prevent actual submission
+  return false; // Prevent actual form submission
 }
+
 
 
 const toggle = document.getElementById("darkModeToggle");

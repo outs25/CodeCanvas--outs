@@ -250,7 +250,7 @@
         <div
           class="container"
           id="contact-container"
-          style="max-width: 1000px; margin: 0 auto;"
+          style="max-width: 1000px; margin: 0 auto"
         >
           <h2
             class="section-title"
@@ -271,14 +271,13 @@
             <div class="flex-contact">
               <div class="fullname">
                 <i
-                  class="fas fa-user"
+                  class="fas fa-user fas-animation"
                   style="
                     position: absolute;
                     top: 16px;
                     left: 16px;
                     color: #ccc;
                     font-size: 1.4rem;
-                    animation: bounce 2s infinite;
                   "
                 ></i>
                 <input
@@ -297,14 +296,13 @@
               </div>
               <div class="fullname">
                 <i
-                  class="fas fa-user"
+                  class="fas fa-id-card fas-animation"
                   style="
                     position: absolute;
                     top: 16px;
                     left: 16px;
                     color: #ccc;
                     font-size: 1.4rem;
-                    animation: bounce 2s infinite;
                   "
                 ></i>
                 <input
@@ -324,14 +322,13 @@
             </div>
             <div style="position: relative">
               <i
-                class="fas fa-envelope"
+                class="fas fa-envelope fas-animation"
                 style="
                   position: absolute;
                   top: 16px;
                   left: 16px;
                   color: #ccc;
                   font-size: 1.4rem;
-                  animation: bounce 2s infinite;
                 "
               ></i>
               <input
@@ -350,14 +347,13 @@
             </div>
             <div style="position: relative">
               <i
-                class="fas fa-comment-dots"
+                class="fas fa-comment-dots fas-animation"
                 style="
                   position: absolute;
                   top: 16px;
                   left: 16px;
                   color: #ccc;
                   font-size: 1.4rem;
-                  animation: bounce 2s infinite;
                 "
               ></i>
               <textarea
@@ -377,6 +373,7 @@
             <button
               type="submit"
               id="submit"
+              class="fill-btn"
               style="
                 padding: 16px;
                 border: none;
@@ -401,6 +398,12 @@
           </div>
         </div>
       </section>
+      <div id="message-overlay">
+        <div class="overlay-content">
+          <i class="fas fa-check-circle"></i>
+          <p>Message Delivered</p>
+        </div>
+      </div>
     </main>
 
     <footer class="footer">
