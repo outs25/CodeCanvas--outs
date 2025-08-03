@@ -461,6 +461,24 @@
             color: #667eea;
         }
 
+        .project-tags {
+            margin-top: 0.5rem;
+            margin-bottom: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag-badge {
+            background-color: #e0e0e0;
+            color: #333;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
         .upvote-section {
             display: flex;
             justify-content: space-between;

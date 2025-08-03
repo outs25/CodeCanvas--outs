@@ -20,7 +20,7 @@ const sampleProjects = [
                 description: 'A responsive weather application with beautiful animations and detailed forecasts. Features location-based weather data and interactive charts.',
                 repoUrl: 'https://github.com/example/weather-dashboard',
                 demoUrl: 'https://example.github.io/weather-dashboard/',
-                difficulty: 'Intermediate',
+                difficulty: 'intermediate',
                 upvotes: 28,
                 hasDemo: true,
                 hasReadme: true,
@@ -59,7 +59,7 @@ const sampleProjects = [
                 description: 'A simple and intuitive expense tracker app to monitor daily spending, manage budgets, and gain financial insights.',
                 repoUrl: 'https://github.com/DineshPabboju/Expense-Tracker-App',
                 demoUrl: 'https://expense-tracker-app-04.netlify.app/',
-                difficulty: 'Intermediate',
+                difficulty: 'intermediate',
                 upvotes: 21,
                 hasDemo: true,
                 hasReadme: false,
@@ -170,6 +170,12 @@ const sampleProjects = [
                             ? ' • <i class="fas fa-file-alt meta-icon"></i> README Included'
                             : ' • <i class="fas fa-exclamation-triangle meta-icon"></i> No README'
                         }
+                    </div>
+
+                    <div class="project-tags">
+                        ${project.tags.map((item, index)=>`
+                            <span class="tag-badge">${item}</span>
+                        `).join('')}
                     </div>
                     
                     <div class="upvote-section">
