@@ -494,6 +494,7 @@
         /* REVIEW SECTION */
         .reviews-section {
           padding: 60px 0;
+          cursor: pointer;
         }
         
         .review-section-title {
@@ -510,10 +511,12 @@
           width: 100%;
           padding: 2rem 0;
           position: relative;
+          cursor:auto;
         }
         
         .swiper-wrapper {
           align-items: center;
+         cursor:auto;
         }
         
         
@@ -521,6 +524,8 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          cursor:auto;
+
         }
         
         
