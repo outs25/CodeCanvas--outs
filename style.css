@@ -608,12 +608,12 @@
         
         .swiper-button-prev span {
           left: 20px;
-          margin-left: 2rem;
+          margin-left: 25rem;
         }
         
         .swiper-button-next span{
           right: 20px;
-          margin-right: 2rem;
+          margin-right: 25rem;
         }
         
         .swiper-button-prev:hover,
