@@ -489,7 +489,6 @@
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
-        /* REVIEW SECTION */
 
         
         /* REVIEW SECTION */
@@ -615,11 +614,6 @@
         .swiper-button-next span{
           right: 20px;
           margin-right: 25rem;
-        }
-        
-        .swiper-button-prev:hover,
-        .swiper-button-next:hover {
-          transform:  scale(1.1);
         }
         
         
