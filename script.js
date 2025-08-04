@@ -345,6 +345,7 @@ function validateForm() {
         icon.textContent = theme === 'dark' ? '☀️' : '🌙';
     });
 
+    //Review Section JS
     const swiper = new Swiper(".review-swiper", {
     loop: true, 
     slidesPerView: 1, 
