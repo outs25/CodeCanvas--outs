@@ -79,6 +79,20 @@ const sampleProjects = [
                 previewImage: "assets/image.png",
                 tags: ["REACT", "Tailwind CSS", "Responsive", "React-Router DOM"],
             },
+             {
+                id: 7,
+                title: 'PassWord Generator',
+                description: 'Enable user to create password with specified length and character (uppercase, lowercase , special character and numbers) to meet diverse securing requirements.',
+                repoUrl: 'https://github.com/Sitaram8472/Generate-password',
+                demoUrl: null,
+                difficulty: 'advanced',
+                upvotes: 42,
+                hasDemo: false,
+                hasReadme: true,
+                previewImage: "assets/GeneratePassword.png",
+                tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
+            },
+           
         ];
 
         // Store the current projects array
