@@ -345,37 +345,21 @@ function validateForm() {
         icon.textContent = theme === 'dark' ? '☀️' : '🌙';
     });
 
-        //Review Section
-         let swiper = new Swiper(".swiper",{
-        effect: "coverflow",
-        grabCursor:true,
-        centeredSlides:true,
-        speed: 600,
-        coverflowEffect:{
-            rotate:0,
-            stretch:0,
-            depth:100,
-            slideShadows:true
-        },
-        loop:true,
-        navigation:{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev"
-        },
-        keyboard:{
-            enabled:true
-        },
-        
-        breakpoints:{
-            560:{
-               slidesPerView: 2.5 
-            },
-            768:{
-                slidesPerView: 3
-            },
-            1024:{
-                 slidesPerView: 3
-            }
-        
-        }
-        });
+    const swiper = new Swiper(".review-swiper", {
+    loop: true, 
+    slidesPerView: 1, 
+    spaceBetween: 20, 
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    keyboard: {
+      enabled: true,
+    },
+    mousewheel: {
+      forceToAxis: true,
+    },
+    grabCursor: true,
+    speed: 600,
+  });
+     
