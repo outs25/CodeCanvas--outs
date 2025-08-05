@@ -358,3 +358,23 @@ function validateForm() {
         // Update icon
         icon.textContent = theme === 'dark' ? '☀️' : '🌙';
     });
+
+    //Review Section JS
+    const swiper = new Swiper(".review-swiper", {
+    loop: true, 
+    slidesPerView: 1, 
+    spaceBetween: 20, 
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    keyboard: {
+      enabled: true,
+    },
+    mousewheel: {
+      forceToAxis: true,
+    },
+    grabCursor: true,
+    speed: 600,
+  });
+     
