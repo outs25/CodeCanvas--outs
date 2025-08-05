@@ -5,13 +5,13 @@ const sampleProjects = [
                 id: 1,
                 title: 'Analog Clock Web App',
                 description: 'A beautifully designed analog clock that updates in real-time using vanilla JavaScript, HTML, and CSS. Perfect for understanding basic DOM manipulation and CSS transformations.',
-                repoUrl: 'https://github.com/Varshitha713/analog-clock-web-app',
-                demoUrl: 'https://varshitha713.github.io/analog-clock-web-app/',
+                repoUrl: 'https://github.com/snehhhcodes/Analog-Clock-Web-App',
+                demoUrl: 'https://snehhhcodes.github.io/Analog-Clock-Web-App/',
                 difficulty: 'beginner',
                 upvotes: 15,
                 hasDemo: true,
                 hasReadme: true,
-                previewImage: 'https://github.com/user-attachments/assets/091946a3-d98d-42dc-a22a-90eaefc8b1b1',
+                previewImage: 'assets/Preview.png',
                 tags: ['JavaScript', 'CSS', 'HTML', 'DOM']
             },
             {
@@ -79,6 +79,20 @@ const sampleProjects = [
                 previewImage: "assets/image.png",
                 tags: ["REACT", "Tailwind CSS", "Responsive", "React-Router DOM"],
             },
+             {
+                id: 7,
+                title: 'PassWord Generator',
+                description: 'Enable user to create password with specified length and character (uppercase, lowercase , special character and numbers) to meet diverse securing requirements.',
+                repoUrl: 'https://github.com/Sitaram8472/Generate-password',
+                demoUrl: 'https://password-generator021.netlify.app/',
+                difficulty: 'advanced',
+                upvotes: 42,
+                hasDemo: true,
+                hasReadme: true,
+                previewImage: "assets/GeneratePassword.png",
+                tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
+            },
+           
         ];
 
         // Store the current projects array
@@ -344,3 +358,23 @@ function validateForm() {
         // Update icon
         icon.textContent = theme === 'dark' ? '☀️' : '🌙';
     });
+
+    //Review Section JS
+    const swiper = new Swiper(".review-swiper", {
+    loop: true, 
+    slidesPerView: 1, 
+    spaceBetween: 20, 
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    keyboard: {
+      enabled: true,
+    },
+    mousewheel: {
+      forceToAxis: true,
+    },
+    grabCursor: true,
+    speed: 600,
+  });
+     
