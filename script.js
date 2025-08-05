@@ -378,3 +378,19 @@ function validateForm() {
     speed: 600,
   });
      
+
+    //Scroll to top functionality
+      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+// Show button when user scrolls down
+window.addEventListener("scroll", () => {
+    scrollToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
+
+// Scroll to top smoothly
+scrollToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
