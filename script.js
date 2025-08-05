@@ -84,10 +84,10 @@ const sampleProjects = [
                 title: 'PassWord Generator',
                 description: 'Enable user to create password with specified length and character (uppercase, lowercase , special character and numbers) to meet diverse securing requirements.',
                 repoUrl: 'https://github.com/Sitaram8472/Generate-password',
-                demoUrl: null,
+                demoUrl: 'https://password-generator021.netlify.app/',
                 difficulty: 'advanced',
                 upvotes: 42,
-                hasDemo: false,
+                hasDemo: true,
                 hasReadme: true,
                 previewImage: "assets/GeneratePassword.png",
                 tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
