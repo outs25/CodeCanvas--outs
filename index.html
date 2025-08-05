@@ -83,7 +83,7 @@
         </section>
 
         <section class="projects-section" id="projects">
-            <div class="container">
+            <div class="projects-container">
                 <h2 class="section-title">Featured Projects</h2>
                 <div class="loading" id="loading">
                     <div class="spinner"></div>
@@ -385,31 +385,8 @@
         icon.textContent = '🌙'; // Moon in light mode
     }
 
-    toggle.addEventListener('click', () => {
-        body.classList.toggle('dark-theme');
-        const theme = body.classList.contains('dark-theme') ? 'dark' : 'light';
-        localStorage.setItem('theme', theme);
 
-        // Update icon
-        icon.textContent = theme === 'dark' ? '☀️' : '🌙';
-</script>
+    <script src="script.js"></script>
+</body>
+</html>
 
-    
-<script>
-    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-// Show button when user scrolls down
-window.addEventListener("scroll", () => {
-    scrollToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
-});
-
-// Scroll to top smoothly
-scrollToTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
-
-</script>
-  </body>
