@@ -79,6 +79,20 @@ const sampleProjects = [
                 previewImage: "assets/image.png",
                 tags: ["REACT", "Tailwind CSS", "Responsive", "React-Router DOM"],
             },
+             {
+                id: 7,
+                title: 'PassWord Generator',
+                description: 'Enable user to create password with specified length and character (uppercase, lowercase , special character and numbers) to meet diverse securing requirements.',
+                repoUrl: 'https://github.com/Sitaram8472/Generate-password',
+                demoUrl: 'https://password-generator021.netlify.app/',
+                difficulty: 'advanced',
+                upvotes: 42,
+                hasDemo: true,
+                hasReadme: true,
+                previewImage: "assets/GeneratePassword.png",
+                tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
+            },
+           
         ];
 
         // Store the current projects array
@@ -344,3 +358,23 @@ function validateForm() {
         // Update icon
         icon.textContent = theme === 'dark' ? '☀️' : '🌙';
     });
+
+    //Review Section JS
+    const swiper = new Swiper(".review-swiper", {
+    loop: true, 
+    slidesPerView: 1, 
+    spaceBetween: 20, 
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    keyboard: {
+      enabled: true,
+    },
+    mousewheel: {
+      forceToAxis: true,
+    },
+    grabCursor: true,
+    speed: 600,
+  });
+     
