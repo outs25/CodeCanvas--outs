@@ -5,13 +5,13 @@ const sampleProjects = [
                 id: 1,
                 title: 'Analog Clock Web App',
                 description: 'A beautifully designed analog clock that updates in real-time using vanilla JavaScript, HTML, and CSS. Perfect for understanding basic DOM manipulation and CSS transformations.',
-                repoUrl: 'https://github.com/Varshitha713/analog-clock-web-app',
-                demoUrl: 'https://varshitha713.github.io/analog-clock-web-app/',
+                repoUrl: 'https://github.com/snehhhcodes/Analog-Clock-Web-App',
+                demoUrl: 'https://snehhhcodes.github.io/Analog-Clock-Web-App/',
                 difficulty: 'beginner',
                 upvotes: 15,
                 hasDemo: true,
                 hasReadme: true,
-                previewImage: 'https://github.com/user-attachments/assets/091946a3-d98d-42dc-a22a-90eaefc8b1b1',
+                previewImage: 'assets/Preview.png',
                 tags: ['JavaScript', 'CSS', 'HTML', 'DOM']
             },
             {
@@ -79,6 +79,20 @@ const sampleProjects = [
                 previewImage: "assets/image.png",
                 tags: ["REACT", "Tailwind CSS", "Responsive", "React-Router DOM"],
             },
+             {
+                id: 7,
+                title: 'PassWord Generator',
+                description: 'Enable user to create password with specified length and character (uppercase, lowercase , special character and numbers) to meet diverse securing requirements.',
+                repoUrl: 'https://github.com/Sitaram8472/Generate-password',
+                demoUrl: 'https://password-generator021.netlify.app/',
+                difficulty: 'advanced',
+                upvotes: 42,
+                hasDemo: true,
+                hasReadme: true,
+                previewImage: "assets/GeneratePassword.png",
+                tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
+            },
+           
         ];
 
         // Store the current projects array
@@ -341,28 +355,40 @@ const sampleProjects = [
         // Make handleUpvote globally available
         window.handleUpvote = handleUpvote;
 
-        // Start the app
-        document.addEventListener('DOMContentLoaded', init);
+// Start the app
+document.addEventListener("DOMContentLoaded", init);
+// Adding m own version and also added a feature where the input field will get clear on clicking the send message button
+function validateForm() {
+  const name = document.getElementById("name").value.trim();
+  const lastname = document.getElementById("lastname").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+  if (!name || !lastname || !email || !message) {
+    alert("Please fill in all fields.");
+    return false;
+  }
+  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  if (!email.match(emailPattern)) {
+    alert("Please enter a valid email.");
+    return false;
+  }
 
-        function validateForm() {
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const message = document.getElementById("message").value.trim();
-    
-        if (!name || !email || !message) {
-            alert("Please fill in all fields.");
-            return false;
-        }
-    
-        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-        if (!email.match(emailPattern)) {
-            alert("Please enter a valid email.");
-            return false;
-        }
-    
-        document.getElementById("form-status").style.display = "block";
-        return false; // Prevent actual submission
-    }
+  // Show the overlay
+  const overlay = document.getElementById("message-overlay");
+  overlay.style.opacity = "1";
+  overlay.style.pointerEvents = "auto";
+
+  // Hide the overlay after 3 seconds
+  setTimeout(() => {
+    overlay.style.opacity = "0";
+    overlay.style.pointerEvents = "none";
+  }, 3000);
+
+  // Clear form
+  document.getElementById("contact-form").reset();
+
+  return false; // Prevent actual form submission
+}
 
     const toggle = document.getElementById('darkModeToggle');
     const body = document.body;
@@ -385,3 +411,23 @@ const sampleProjects = [
         // Update icon
         icon.textContent = theme === 'dark' ? '☀️' : '🌙';
     });
+
+    //Review Section JS
+    const swiper = new Swiper(".review-swiper", {
+    loop: true, 
+    slidesPerView: 1, 
+    spaceBetween: 20, 
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    keyboard: {
+      enabled: true,
+    },
+    mousewheel: {
+      forceToAxis: true,
+    },
+    grabCursor: true,
+    speed: 600,
+  });
+     
