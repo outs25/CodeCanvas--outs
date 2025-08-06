@@ -83,6 +83,15 @@ const sampleProjects = [
 
         // Store the current projects array
         let currentProjects = [...sampleProjects];
+        let selectedTag = null;
+
+        //Store all the unique tags
+        const allTagSet = new Set();
+        sampleProjects.forEach(project => {
+            project.tags.forEach(tag => allTagSet.add(tag));
+        })
+
+        const uniqueTags = Array.from(allTagSet);
 
         // DOM elements
         const projectsContainer = document.getElementById('projects-container');
@@ -95,6 +104,15 @@ const sampleProjects = [
         const resetFiltersBtn = document.getElementById('reset-filters');
         const searchInput = document.getElementById('search-input');
         const clearSearchBtn = document.getElementById('clear-search');
+        const tagFiltersContainer = document.querySelector('.tag-filters');
+
+        uniqueTags.forEach(tag => {
+            const button = document.createElement('button');
+            button.textContent = tag;
+            button.classList.add('tag-filter-btn')
+            button.dataset.tag = tag
+            tagFiltersContainer.appendChild(button)
+        })
 
         // Initialize the app
         function init() {
@@ -102,6 +120,7 @@ const sampleProjects = [
                 hideLoading();
                 renderProjects(currentProjects);
                 setupEventListeners();
+                initializeTagFilterListener();
             }, 1000); // Simulate loading time
         }
 
@@ -128,6 +147,28 @@ const sampleProjects = [
                 });
             });
         }
+
+        function initializeTagFilterListener() {
+            tagFiltersContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('tag-filter-btn')) {
+                    const clickedTag = e.target.dataset.tag;
+
+                    // Toggle selection
+                    if (selectedTag === clickedTag) {
+                        selectedTag = null;
+                        e.target.classList.remove('active');
+                    } else {
+                        selectedTag = clickedTag;
+                        // Remove active from all buttons
+                        document.querySelectorAll('.tag-filter-btn').forEach(btn => btn.classList.remove('active'));
+                        e.target.classList.add('active');
+                    }
+
+                    applyFilters(); // Re-apply filters based on tag
+                }
+            });
+        }
+
 
         // Render projects
         function renderProjects(projects) {
@@ -248,6 +289,10 @@ const sampleProjects = [
                 filtered = filtered.filter(p => p.hasReadme);
             }
 
+            if(selectedTag){
+                filtered = filtered.filter(project => project.tags.includes(selectedTag));
+            }
+
             return filtered;
         }
 
@@ -288,6 +333,8 @@ const sampleProjects = [
             hasReadmeFilter.checked = false;
             searchInput.value = '';
             clearSearchBtn.style.display = 'none';
+            selectedTag = null;
+            document.querySelectorAll('.tag-filter-btn').forEach(btn => btn.classList.remove('active'));
             renderProjects(sampleProjects);
         }
 

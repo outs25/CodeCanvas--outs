@@ -331,6 +331,28 @@
             transform: translateY(-2px);
         }
 
+        .tag-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .tag-filter-btn {
+            padding: 6px 12px;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .tag-filter-btn.active {
+            background: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+
         /* Projects section */
         .projects-section {
             padding: 2rem 0;
