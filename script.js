@@ -113,7 +113,6 @@ const sampleProjects = [
         const emptyStateElement = document.getElementById('empty-state');
         const difficultyFilter = document.getElementById('difficulty');
         const hasDemoFilter = document.getElementById('has-demo');
-        const hasReadmeFilter = document.getElementById('has-readme');
         const applyFiltersBtn = document.getElementById('apply-filters');
         const resetFiltersBtn = document.getElementById('reset-filters');
         const searchInput = document.getElementById('search-input');
@@ -278,7 +277,6 @@ const sampleProjects = [
 
             const difficulty = difficultyFilter.value;
             const needsDemo = hasDemoFilter.checked;
-            const needsReadme = hasReadmeFilter.checked;
             const searchTerm = searchInput.value.toLowerCase().trim();
 
             // Apply search filter
@@ -297,10 +295,6 @@ const sampleProjects = [
 
             if (needsDemo) {
                 filtered = filtered.filter(p => p.hasDemo);
-            }
-
-            if (needsReadme) {
-                filtered = filtered.filter(p => p.hasReadme);
             }
 
             if(selectedTag){
@@ -344,7 +338,6 @@ const sampleProjects = [
         function resetFilters() {
             difficultyFilter.value = 'all';
             hasDemoFilter.checked = false;
-            hasReadmeFilter.checked = false;
             searchInput.value = '';
             clearSearchBtn.style.display = 'none';
             selectedTag = null;
@@ -355,79 +348,79 @@ const sampleProjects = [
         // Make handleUpvote globally available
         window.handleUpvote = handleUpvote;
 
-// Start the app
-document.addEventListener("DOMContentLoaded", init);
-// Adding m own version and also added a feature where the input field will get clear on clicking the send message button
-function validateForm() {
-  const name = document.getElementById("name").value.trim();
-  const lastname = document.getElementById("lastname").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
-  if (!name || !lastname || !email || !message) {
-    alert("Please fill in all fields.");
-    return false;
-  }
-  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  if (!email.match(emailPattern)) {
-    alert("Please enter a valid email.");
-    return false;
-  }
+        // Start the app
+        document.addEventListener("DOMContentLoaded", init);
+        // Adding m own version and also added a feature where the input field will get clear on clicking the send message button
+        function validateForm() {
+            const name = document.getElementById("name").value.trim();
+            const lastname = document.getElementById("lastname").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+            if (!name || !lastname || !email || !message) {
+                alert("Please fill in all fields.");
+                return false;
+            }
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+                alert("Please enter a valid email.");
+                return false;
+            }
 
-  // Show the overlay
-  const overlay = document.getElementById("message-overlay");
-  overlay.style.opacity = "1";
-  overlay.style.pointerEvents = "auto";
+                // Show the overlay
+                const overlay = document.getElementById("message-overlay");
+                overlay.style.opacity = "1";
+                overlay.style.pointerEvents = "auto";
 
-  // Hide the overlay after 3 seconds
-  setTimeout(() => {
-    overlay.style.opacity = "0";
-    overlay.style.pointerEvents = "none";
-  }, 3000);
+                // Hide the overlay after 3 seconds
+                setTimeout(() => {
+                    overlay.style.opacity = "0";
+                    overlay.style.pointerEvents = "none";
+                }, 3000);
 
-  // Clear form
-  document.getElementById("contact-form").reset();
+                // Clear form
+                document.getElementById("contact-form").reset();
 
-  return false; // Prevent actual form submission
-}
+                return false; // Prevent actual form submission
+        }
 
-    const toggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-    const icon = document.getElementById('themeIcon');
+            const toggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
 
-    // Load preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-theme');
-        icon.textContent = '☀️'; // Sun in dark mode
-    } else {
-        icon.textContent = '🌙'; // Moon in light mode
-    }
+            // Load preference
+            const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    body.classList.add('dark-theme');
+                    icon.textContent = '☀️'; // Sun in dark mode
+                } else {
+                    icon.textContent = '🌙'; // Moon in light mode
+                }
 
-    toggle.addEventListener('click', () => {
-        body.classList.toggle('dark-theme');
-        const theme = body.classList.contains('dark-theme') ? 'dark' : 'light';
-        localStorage.setItem('theme', theme);
+            toggle.addEventListener('click', () => {
+                body.classList.toggle('dark-theme');
+                const theme = body.classList.contains('dark-theme') ? 'dark' : 'light';
+                localStorage.setItem('theme', theme);
 
-        // Update icon
-        icon.textContent = theme === 'dark' ? '☀️' : '🌙';
-    });
+                // Update icon
+                icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+            });
 
-    //Review Section JS
-    const swiper = new Swiper(".review-swiper", {
-    loop: true, 
-    slidesPerView: 1, 
-    spaceBetween: 20, 
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    keyboard: {
-      enabled: true,
-    },
-    mousewheel: {
-      forceToAxis: true,
-    },
-    grabCursor: true,
-    speed: 600,
-  });
-     
+            //Review Section JS
+            const swiper = new Swiper(".review-swiper", {
+                loop: true, 
+                slidesPerView: 1, 
+                spaceBetween: 20, 
+                navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+                },
+                keyboard: {
+                enabled: true,
+                },
+                mousewheel: {
+                forceToAxis: true,
+                },
+                grabCursor: true,
+                speed: 600,
+        });
+            
