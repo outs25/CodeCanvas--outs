@@ -20,7 +20,7 @@ const sampleProjects = [
                 description: 'A responsive weather application with beautiful animations and detailed forecasts. Features location-based weather data and interactive charts.',
                 repoUrl: 'https://github.com/example/weather-dashboard',
                 demoUrl: 'https://example.github.io/weather-dashboard/',
-                difficulty: 'Intermediate',
+                difficulty: 'intermediate',
                 upvotes: 28,
                 hasDemo: true,
                 hasReadme: true,
@@ -59,7 +59,7 @@ const sampleProjects = [
                 description: 'A simple and intuitive expense tracker app to monitor daily spending, manage budgets, and gain financial insights.',
                 repoUrl: 'https://github.com/DineshPabboju/Expense-Tracker-App',
                 demoUrl: 'https://expense-tracker-app-04.netlify.app/',
-                difficulty: 'Intermediate',
+                difficulty: 'intermediate',
                 upvotes: 21,
                 hasDemo: true,
                 hasReadme: false,
@@ -97,6 +97,15 @@ const sampleProjects = [
 
         // Store the current projects array
         let currentProjects = [...sampleProjects];
+        let selectedTag = null;
+
+        //Store all the unique tags
+        const allTagSet = new Set();
+        sampleProjects.forEach(project => {
+            project.tags.forEach(tag => allTagSet.add(tag));
+        })
+
+        const uniqueTags = Array.from(allTagSet);
 
         // DOM elements
         const projectsContainer = document.getElementById('projects-container');
@@ -104,11 +113,19 @@ const sampleProjects = [
         const emptyStateElement = document.getElementById('empty-state');
         const difficultyFilter = document.getElementById('difficulty');
         const hasDemoFilter = document.getElementById('has-demo');
-        const hasReadmeFilter = document.getElementById('has-readme');
         const applyFiltersBtn = document.getElementById('apply-filters');
         const resetFiltersBtn = document.getElementById('reset-filters');
         const searchInput = document.getElementById('search-input');
         const clearSearchBtn = document.getElementById('clear-search');
+        const tagFiltersContainer = document.querySelector('.tag-filters');
+
+        uniqueTags.forEach(tag => {
+            const button = document.createElement('button');
+            button.textContent = tag;
+            button.classList.add('tag-filter-btn')
+            button.dataset.tag = tag
+            tagFiltersContainer.appendChild(button)
+        })
 
         // Initialize the app
         function init() {
@@ -116,6 +133,7 @@ const sampleProjects = [
                 hideLoading();
                 renderProjects(currentProjects);
                 setupEventListeners();
+                initializeTagFilterListener();
             }, 1000); // Simulate loading time
         }
 
@@ -142,6 +160,28 @@ const sampleProjects = [
                 });
             });
         }
+
+        function initializeTagFilterListener() {
+            tagFiltersContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('tag-filter-btn')) {
+                    const clickedTag = e.target.dataset.tag;
+
+                    // Toggle selection
+                    if (selectedTag === clickedTag) {
+                        selectedTag = null;
+                        e.target.classList.remove('active');
+                    } else {
+                        selectedTag = clickedTag;
+                        // Remove active from all buttons
+                        document.querySelectorAll('.tag-filter-btn').forEach(btn => btn.classList.remove('active'));
+                        e.target.classList.add('active');
+                    }
+
+                    applyFilters(); // Re-apply filters based on tag
+                }
+            });
+        }
+
 
         // Render projects
         function renderProjects(projects) {
@@ -184,6 +224,12 @@ const sampleProjects = [
                             ? ' • <i class="fas fa-file-alt meta-icon"></i> README Included'
                             : ' • <i class="fas fa-exclamation-triangle meta-icon"></i> No README'
                         }
+                    </div>
+
+                    <div class="project-tags">
+                        ${project.tags.map((item, index)=>`
+                            <span class="tag-badge">${item}</span>
+                        `).join('')}
                     </div>
                     
                     <div class="upvote-section">
@@ -231,7 +277,6 @@ const sampleProjects = [
 
             const difficulty = difficultyFilter.value;
             const needsDemo = hasDemoFilter.checked;
-            const needsReadme = hasReadmeFilter.checked;
             const searchTerm = searchInput.value.toLowerCase().trim();
 
             // Apply search filter
@@ -252,8 +297,8 @@ const sampleProjects = [
                 filtered = filtered.filter(p => p.hasDemo);
             }
 
-            if (needsReadme) {
-                filtered = filtered.filter(p => p.hasReadme);
+            if(selectedTag){
+                filtered = filtered.filter(project => project.tags.includes(selectedTag));
             }
 
             return filtered;
@@ -293,88 +338,89 @@ const sampleProjects = [
         function resetFilters() {
             difficultyFilter.value = 'all';
             hasDemoFilter.checked = false;
-            hasReadmeFilter.checked = false;
             searchInput.value = '';
             clearSearchBtn.style.display = 'none';
+            selectedTag = null;
+            document.querySelectorAll('.tag-filter-btn').forEach(btn => btn.classList.remove('active'));
             renderProjects(sampleProjects);
         }
 
         // Make handleUpvote globally available
         window.handleUpvote = handleUpvote;
 
-// Start the app
-document.addEventListener("DOMContentLoaded", init);
-// Adding m own version and also added a feature where the input field will get clear on clicking the send message button
-function validateForm() {
-  const name = document.getElementById("name").value.trim();
-  const lastname = document.getElementById("lastname").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
-  if (!name || !lastname || !email || !message) {
-    alert("Please fill in all fields.");
-    return false;
-  }
-  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  if (!email.match(emailPattern)) {
-    alert("Please enter a valid email.");
-    return false;
-  }
+        // Start the app
+        document.addEventListener("DOMContentLoaded", init);
+        // Adding m own version and also added a feature where the input field will get clear on clicking the send message button
+        function validateForm() {
+            const name = document.getElementById("name").value.trim();
+            const lastname = document.getElementById("lastname").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+            if (!name || !lastname || !email || !message) {
+                alert("Please fill in all fields.");
+                return false;
+            }
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+                alert("Please enter a valid email.");
+                return false;
+            }
 
-  // Show the overlay
-  const overlay = document.getElementById("message-overlay");
-  overlay.style.opacity = "1";
-  overlay.style.pointerEvents = "auto";
+                // Show the overlay
+                const overlay = document.getElementById("message-overlay");
+                overlay.style.opacity = "1";
+                overlay.style.pointerEvents = "auto";
 
-  // Hide the overlay after 3 seconds
-  setTimeout(() => {
-    overlay.style.opacity = "0";
-    overlay.style.pointerEvents = "none";
-  }, 3000);
+                // Hide the overlay after 3 seconds
+                setTimeout(() => {
+                    overlay.style.opacity = "0";
+                    overlay.style.pointerEvents = "none";
+                }, 3000);
 
-  // Clear form
-  document.getElementById("contact-form").reset();
+                // Clear form
+                document.getElementById("contact-form").reset();
 
-  return false; // Prevent actual form submission
-}
+                return false; // Prevent actual form submission
+        }
 
-    const toggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-    const icon = document.getElementById('themeIcon');
+            const toggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
 
-    // Load preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-theme');
-        icon.textContent = '☀️'; // Sun in dark mode
-    } else {
-        icon.textContent = '🌙'; // Moon in light mode
-    }
+            // Load preference
+            const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    body.classList.add('dark-theme');
+                    icon.textContent = '☀️'; // Sun in dark mode
+                } else {
+                    icon.textContent = '🌙'; // Moon in light mode
+                }
 
-    toggle.addEventListener('click', () => {
-        body.classList.toggle('dark-theme');
-        const theme = body.classList.contains('dark-theme') ? 'dark' : 'light';
-        localStorage.setItem('theme', theme);
+            toggle.addEventListener('click', () => {
+                body.classList.toggle('dark-theme');
+                const theme = body.classList.contains('dark-theme') ? 'dark' : 'light';
+                localStorage.setItem('theme', theme);
 
-        // Update icon
-        icon.textContent = theme === 'dark' ? '☀️' : '🌙';
-    });
+                // Update icon
+                icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+            });
 
-    //Review Section JS
-    const swiper = new Swiper(".review-swiper", {
-    loop: true, 
-    slidesPerView: 1, 
-    spaceBetween: 20, 
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    keyboard: {
-      enabled: true,
-    },
-    mousewheel: {
-      forceToAxis: true,
-    },
-    grabCursor: true,
-    speed: 600,
-  });
-     
+            //Review Section JS
+            const swiper = new Swiper(".review-swiper", {
+                loop: true, 
+                slidesPerView: 1, 
+                spaceBetween: 20, 
+                navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+                },
+                keyboard: {
+                enabled: true,
+                },
+                mousewheel: {
+                forceToAxis: true,
+                },
+                grabCursor: true,
+                speed: 600,
+        });
+            
