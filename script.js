@@ -1,99 +1,98 @@
 
-//this data in future contribution should be done using firebase
 const sampleProjects = [
-            {
-                id: 1,
-                title: 'Analog Clock Web App',
-                description: 'A beautifully designed analog clock that updates in real-time using vanilla JavaScript, HTML, and CSS. Perfect for understanding basic DOM manipulation and CSS transformations.',
-                repoUrl: 'https://github.com/snehhhcodes/Analog-Clock-Web-App',
-                demoUrl: 'https://snehhhcodes.github.io/Analog-Clock-Web-App/',
-                difficulty: 'beginner',
-                upvotes: 15,
-                hasDemo: true,
-                hasReadme: true,
-                previewImage: 'assets/Preview.png',
-                tags: ['JavaScript', 'CSS', 'HTML', 'DOM']
-            },
-            {
-                id: 2,
-                title: 'Weather Dashboard',
-                description: 'A responsive weather application with beautiful animations and detailed forecasts. Features location-based weather data and interactive charts.',
-                repoUrl: 'https://github.com/example/weather-dashboard',
-                demoUrl: 'https://example.github.io/weather-dashboard/',
-                difficulty: 'intermediate',
-                upvotes: 28,
-                hasDemo: true,
-                hasReadme: true,
-                previewImage: null,
-                tags: ['React', 'API', 'Charts', 'Responsive']
-            },
-            {
-                id: 3,
-                title: 'Task Management App',
-                description: 'A full-featured task management application with drag-and-drop functionality, real-time updates, and team collaboration features.',
-                repoUrl: 'https://github.com/example/task-manager',
-                demoUrl: null,
-                difficulty: 'advanced',
-                upvotes: 42,
-                hasDemo: false,
-                hasReadme: true,
-                previewImage: null,
-                tags: ['Vue.js', 'Drag & Drop', 'WebSocket', 'PWA']
-            },
-            {
-                id: 4,
-                title: 'Portfolio Website',
-                description: 'A modern, responsive portfolio website with smooth animations, dark mode toggle, and optimized performance. Great starting point for personal branding.',
-                repoUrl: 'https://github.com/example/portfolio',
-                demoUrl: 'https://example.github.io/portfolio/',
-                difficulty: 'beginner',
-                upvotes: 31,
-                hasDemo: true,
-                hasReadme: true,
-                previewImage: null,
-                tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
-            },
-            {
-                id: 5,
-                title: 'Expense Tracker App',
-                description: 'A simple and intuitive expense tracker app to monitor daily spending, manage budgets, and gain financial insights.',
-                repoUrl: 'https://github.com/DineshPabboju/Expense-Tracker-App',
-                demoUrl: 'https://expense-tracker-app-04.netlify.app/',
-                difficulty: 'intermediate',
-                upvotes: 21,
-                hasDemo: true,
-                hasReadme: false,
-                previewImage: 'assets/Expense-Tracker-Preview.png',
-                tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
-            },
-            {
-                id: 6,
-                title: "IMDb Clone",
-                description: 'A responsive IMDb clone showcasing popular movies with detailed info using TMDb API and modern frontend technologies.',
-                repoUrl: "https://github.com/Jils31/IMDB-clone",
-                demoUrl: "https://imdb-clone-seven-virid.vercel.app/",
-                difficulty: "intermediate",
-                upvotes: 21,
-                hasDemo: true,
-                hasReadme: true,
-                previewImage: "assets/image.png",
-                tags: ["REACT", "Tailwind CSS", "Responsive", "React-Router DOM"],
-            },
-             {
-                id: 7,
-                title: 'PassWord Generator',
-                description: 'Enable user to create password with specified length and character (uppercase, lowercase , special character and numbers) to meet diverse securing requirements.',
-                repoUrl: 'https://github.com/Sitaram8472/Generate-password',
-                demoUrl: 'https://password-generator021.netlify.app/',
-                difficulty: 'advanced',
-                upvotes: 42,
-                hasDemo: true,
-                hasReadme: true,
-                previewImage: "assets/GeneratePassword.png",
-                tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
-            },
-           
-        ];
+  {
+    id: 1,
+    title: 'Analog Clock Web App',
+    description: 'A beautifully designed analog clock that updates in real-time using vanilla JavaScript, HTML, and CSS. Perfect for understanding basic DOM manipulation and CSS transformations.',
+    repoUrl: 'https://github.com/snehhhcodes/Analog-Clock-Web-App',
+    demoUrl: 'https://snehhhcodes.github.io/Analog-Clock-Web-App/',
+    difficulty: 'beginner',
+    upvotes: 15,
+    hasDemo: true,
+    hasReadme: true,
+    previewImage: 'assets/Preview.png',
+    tags: ['JavaScript', 'CSS', 'HTML', 'DOM']
+  },
+  {
+    id: 2,
+    title: 'Weather Dashboard',
+    description: 'A responsive weather application with beautiful animations and detailed forecasts. Features location-based weather data and interactive charts.',
+    repoUrl: 'https://github.com/example/weather-dashboard',
+    demoUrl: 'https://example.github.io/weather-dashboard/',
+    difficulty: 'intermediate',
+    upvotes: 28,
+    hasDemo: true,
+    hasReadme: true,
+    previewImage: null,
+    tags: ['React', 'API', 'Charts', 'Responsive']
+  },
+  {
+    id: 3,
+    title: 'Task Management App',
+    description: 'A full-featured task management application with drag-and-drop functionality, real-time updates, and team collaboration features.',
+    repoUrl: 'https://github.com/example/task-manager',
+    demoUrl: null,
+    difficulty: 'advanced',
+    upvotes: 42,
+    hasDemo: false,
+    hasReadme: true,
+    previewImage: null,
+    tags: ['Vue.js', 'Drag & Drop', 'WebSocket', 'PWA']
+  },
+  {
+    id: 4,
+    title: 'Portfolio Website',
+    description: 'A modern, responsive portfolio website with smooth animations, dark mode toggle, and optimized performance. Great starting point for personal branding.',
+    repoUrl: 'https://github.com/example/portfolio',
+    demoUrl: 'https://example.github.io/portfolio/',
+    difficulty: 'beginner',
+    upvotes: 31,
+    hasDemo: true,
+    hasReadme: true,
+    previewImage: null,
+    tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
+  },
+  {
+    id: 5,
+    title: 'Expense Tracker App',
+    description: 'A simple and intuitive expense tracker app to monitor daily spending, manage budgets, and gain financial insights.',
+    repoUrl: 'https://github.com/DineshPabboju/Expense-Tracker-App',
+    demoUrl: 'https://expense-tracker-app-04.netlify.app/',
+    difficulty: 'intermediate',
+    upvotes: 21,
+    hasDemo: true,
+    hasReadme: false,
+    previewImage: 'assets/Expense-Tracker-Preview.png',
+    tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
+  },
+  {
+    id: 6,
+    title: 'IMDb Clone',
+    description: 'A responsive IMDb clone showcasing popular movies with detailed info using TMDb API and modern frontend technologies.',
+    repoUrl: 'https://github.com/Jils31/IMDB-clone',
+    demoUrl: 'https://imdb-clone-seven-virid.vercel.app/',
+    difficulty: 'intermediate',
+    upvotes: 21,
+    hasDemo: true,
+    hasReadme: true,
+    previewImage: 'assets/image.png',
+    tags: ['REACT', 'Tailwind CSS', 'Responsive', 'React-Router DOM']
+  },
+  {
+    id: 7,
+    title: 'PassWord Generator',
+    description: 'Enable user to create password with specified length and character (uppercase, lowercase , special character and numbers) to meet diverse securing requirements.',
+    repoUrl: 'https://github.com/Sitaram8472/Generate-password',
+    demoUrl: 'https://password-generator021.netlify.app/',
+    difficulty: 'advanced',
+    upvotes: 42,
+    hasDemo: true,
+    hasReadme: true,
+    previewImage: 'assets/GeneratePassword.png',
+    tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
+  }
+];
+
 
         // Store the current projects array
         let currentProjects = [...sampleProjects];
