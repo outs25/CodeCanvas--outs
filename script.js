@@ -1,4 +1,5 @@
 
+
 const sampleProjects = [
   {
     id: 1,
@@ -404,78 +405,22 @@ const sampleProjects = [
                 icon.textContent = theme === 'dark' ? '☀️' : '🌙';
             });
 
-  // Show the overlay
-  const overlay = document.getElementById("message-overlay");
-  overlay.style.opacity = "1";
-  overlay.style.pointerEvents = "auto";
-
-  // Hide the overlay after 3 seconds
-  setTimeout(() => {
-    overlay.style.opacity = "0";
-    overlay.style.pointerEvents = "none";
-  }, 3000);
-
-  // Clear form
-  document.getElementById("contact-form").reset();
-
-  return false; // Prevent actual form submission
-}
-
-    const toggle = document.getElementById('darkModeToggle');
-    const body = document.body;
-    const icon = document.getElementById('themeIcon');
-
-    // Load preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-theme');
-        icon.textContent = '☀️'; // Sun in dark mode
-    } else {
-        icon.textContent = '🌙'; // Moon in light mode
-    }
-
-    toggle.addEventListener('click', () => {
-        body.classList.toggle('dark-theme');
-        const theme = body.classList.contains('dark-theme') ? 'dark' : 'light';
-        localStorage.setItem('theme', theme);
-
-        // Update icon
-        icon.textContent = theme === 'dark' ? '☀️' : '🌙';
-    });
-
-    //Review Section JS
-    const swiper = new Swiper(".review-swiper", {
-    loop: true, 
-    slidesPerView: 1, 
-    spaceBetween: 20, 
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    keyboard: {
-      enabled: true,
-    },
-    mousewheel: {
-      forceToAxis: true,
-    },
-    grabCursor: true,
-    speed: 600,
-  });
-     
-
-    //Scroll to top functionality
-      const scrollToTopBtn = document.getElementById("scrollToTopBtn");
-
-// Show button when user scrolls down
-window.addEventListener("scroll", () => {
-    scrollToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
-});
-
-// Scroll to top smoothly
-scrollToTopBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
-
+            //Review Section JS
+            const swiper = new Swiper(".review-swiper", {
+                loop: true, 
+                slidesPerView: 1, 
+                spaceBetween: 20, 
+                navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+                },
+                keyboard: {
+                enabled: true,
+                },
+                mousewheel: {
+                forceToAxis: true,
+                },
+                grabCursor: true,
+                speed: 600,
+        });
+            
