@@ -225,8 +225,7 @@ The project license for CodeCanvas `Coming Soon`
 </div>
 
 <p align="center">
-  **👨‍💻 Project Mentor**  **❤️Sakshi Patidar❤️** 
-[GitHub](https://github.com/sakshipatidar06) | [LinkedIn](https://www.linkedin.com/in/sakshi-patidar-668114254/)
+  **👨‍💻 Project Mentor**  **❤️Sakshi Patidar❤️** [GitHub](https://github.com/sakshipatidar06) | [LinkedIn](https://www.linkedin.com/in/sakshi-patidar-668114254/)
 </p>
 
 <div align="center">
