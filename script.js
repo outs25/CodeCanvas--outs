@@ -360,27 +360,41 @@ const sampleProjects = [
                 alert("Please fill in all fields.");
                 return false;
             }
+            if (name.length < 4) {
+                alert("First Name must be at least 4 letters.");
+                return false;
+            }
+            if (lastname.length < 4) {
+                alert("Last Name must be at least 4 letters.");
+                return false;
+            }
             const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
             if (!email.match(emailPattern)) {
                 alert("Please enter a valid email.");
                 return false;
             }
+            // Message must have at least 3 words
+            const wordCount = message.split(/\s+/).filter(Boolean).length;
+            if (wordCount < 3) {
+                alert("Message must be at least 3 words.");
+                return false;
+            }
 
-                // Show the overlay
-                const overlay = document.getElementById("message-overlay");
-                overlay.style.opacity = "1";
-                overlay.style.pointerEvents = "auto";
+            // Show the overlay
+            const overlay = document.getElementById("message-overlay");
+            overlay.style.opacity = "1";
+            overlay.style.pointerEvents = "auto";
 
-                // Hide the overlay after 3 seconds
-                setTimeout(() => {
-                    overlay.style.opacity = "0";
-                    overlay.style.pointerEvents = "none";
-                }, 3000);
+            // Hide the overlay after 3 seconds
+            setTimeout(() => {
+                overlay.style.opacity = "0";
+                overlay.style.pointerEvents = "none";
+            }, 3000);
 
-                // Clear form
-                document.getElementById("contact-form").reset();
+            // Clear form
+            document.getElementById("contact-form").reset();
 
-                return false; // Prevent actual form submission
+            return false; // Prevent actual form submission
         }
 
             const toggle = document.getElementById('darkModeToggle');
