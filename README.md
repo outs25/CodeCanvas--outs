@@ -2,15 +2,15 @@
 
 Welcome to **CodeCanvas**, a vibrant community platform where developers from around the globe can showcase their amazing front-end projects, get inspired, and connect with fellow creators. Whether you're a seasoned pro or just starting your journey, this is the perfect place to share your creativity and explore innovative designs.
 
-## About the Project 🌟
-
-CodeCanvas aims to be a go-to hub for front-end developers to display their work, discover new techniques, and foster a collaborative environment. We believe in the power of sharing and learning from each other, making front-end development more accessible and exciting for everyone.
+[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/Varshitha713/CodeCanvas)
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000">
 </div>
 
-[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/Varshitha713/CodeCanvas)
+## About the Project 🌟
+
+CodeCanvas aims to be a go-to hub for front-end developers to display their work, discover new techniques, and foster a collaborative environment. We believe in the power of sharing and learning from each other, making front-end development more accessible and exciting for everyone.
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000">
@@ -52,11 +52,11 @@ CodeCanvas aims to be a go-to hub for front-end developers to display their work
   <b>This project is now OFFICIALLY accepted for:</b>
 </p>
 
-![GSSoC Logo](/CodeDesk/client/src/assests/gssoc%20logo.png)
+![GSSoC Logo](/CodeCanvas/assets/gssoc%20logo.png)
 
 🌟 **Exciting News...**
 
-🚀 This project is now an official part of GirlScript Summer of Code – GSSoC'25! 💃🎉💻 We're thrilled to welcome contributors from all over India and beyond to collaborate, build, and grow. Let’s make learning and career development smarter – together! 🌟👨‍💻👩‍💻
+🚀 This project is now an official part of GirlScript Summer of Code – GSSoC'25! 💃🎉💻 We're thrilled to welcome contributors from all over India and beyond to collaborate, build, and grow CodeCanvas. Let’s make learning and career development smarter – together! 🌟👨‍💻👩‍💻
 
 👩‍💻 GSSoC is one of India’s **largest 3-month-long open-source programs** that encourages developers of all levels to contribute to real-world projects 🌍 while learning, collaborating, and growing together. 🌱
 
@@ -67,7 +67,7 @@ CodeCanvas aims to be a go-to hub for front-end developers to display their work
 🏆 Get recognized for their work
 📜 Receive certificates and swag!
 
-🎉 **I can’t wait to welcome new contributors** from GSSoC 2025 to this CodeDesk project family!
+🎉 **I can’t wait to welcome new contributors** from GSSoC 2025 to this CodeCanvas project family!
 Let's build, learn, and grow together — one commit at a time. 🔥👨‍💻👩‍💻
 
 <div align="center">
@@ -216,12 +216,6 @@ The project license for CodeCanvas `Coming Soon`
 </td>
 </tr>
 </table>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000">
-</div>
-
-  **👨‍💻 Project Mentor**  **❤️Sakshi Patidar❤️** [GitHub](https://github.com/sakshipatidar06) | [LinkedIn](https://www.linkedin.com/in/sakshi-patidar-668114254/)
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000">
