@@ -1327,3 +1327,56 @@ body.dark-theme button:hover {
     background-color: #5a67d8;
     transform: scale(1.1);
 }
+
+.footer-flex-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items:flex-start;
+  padding: 30px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.socials li, .quick-links li {
+  list-style-type: none;
+}
+
+.socials li a{
+  color: white;
+  padding: 10px;
+  font-size: larger;
+}
+
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  background: white;
+  background-clip: text;
+  margin: 10px;
+}
+
+.quick-links li a{
+  text-decoration: none;
+  color: white;
+}
+
+.quick-links li a:hover, .socials li a:hover{
+  color:#764ba2;
+}
+
+.quick-links li{
+  padding: 3px;
+}
+
+.quick-links ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 14px;
+  gap: 50px;
+}
