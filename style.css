@@ -1,5 +1,4 @@
-
-        /* Base styles */
+/* Base styles */
         * {
             margin: 0;
             padding: 0;
@@ -526,6 +525,13 @@
             display: inline-block;
             white-space: nowrap;
         }
+/* Dark mode fix for tags */
+body.dark-theme .tag-badge {
+    background-color: rgba(102, 126, 234, 0.2); /* subtle purple tint */
+    color: #ffffff; /* bright white text */
+    border: 1px solid rgba(102, 126, 234, 0.4); /* soft border */
+}
+
 
         .upvote-section {
             display: flex;
