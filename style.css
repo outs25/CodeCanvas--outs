@@ -1267,5 +1267,12 @@ body.dark-theme button:hover {
 }
 
 .quick-links li{
-  padding: 5px;
+  padding: 3px;
+}
+
+.quick-links ul {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 14px;
 }
