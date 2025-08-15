@@ -1275,4 +1275,5 @@ body.dark-theme button:hover {
   align-items: center;
   flex-wrap: wrap;
   font-size: 14px;
+  gap: 50px;
 }
