@@ -99,6 +99,86 @@ const sampleProjects = [
         let currentProjects = [...sampleProjects];
         let selectedTag = null;
 
+        // Voting system
+        class VotingSystem {
+            constructor() {
+                this.userFingerprint = this.generateUserFingerprint();
+                this.votes = this.loadVotes();
+                this.initializeProjectVotes();
+            }
+
+            generateUserFingerprint() {
+                let fingerprint = localStorage.getItem('userFingerprint');
+                if (!fingerprint) {
+                    fingerprint = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                    localStorage.setItem('userFingerprint', fingerprint);
+                }
+                return fingerprint;
+            }
+
+            loadVotes() {
+                const savedVotes = localStorage.getItem('projectVotes');
+                return savedVotes ? JSON.parse(savedVotes) : {};
+            }
+
+            saveVotes() {
+                localStorage.setItem('projectVotes', JSON.stringify(this.votes));
+            }
+
+            initializeProjectVotes() {
+                sampleProjects.forEach(project => {
+                    if (!this.votes[project.id]) {
+                        this.votes[project.id] = {
+                            count: project.upvotes || 0,
+                            voters: []
+                        };
+                    }
+                });
+                this.saveVotes();
+            }
+
+            canUserVote(projectId) {
+                const projectVotes = this.votes[projectId];
+                return projectVotes && !projectVotes.voters.includes(this.userFingerprint);
+            }
+
+            upvoteProject(projectId) {
+                if (!this.canUserVote(projectId)) {
+                    return { success: false, message: 'You have already voted for this project!' };
+                }
+
+                this.votes[projectId].count++;
+                this.votes[projectId].voters.push(this.userFingerprint);
+                this.saveVotes();
+
+                // Update the project in currentProjects array
+                const project = currentProjects.find(p => p.id === projectId);
+                if (project) {
+                    project.upvotes = this.votes[projectId].count;
+                }
+
+                // Update the project in sampleProjects array
+                const sampleProject = sampleProjects.find(p => p.id === projectId);
+                if (sampleProject) {
+                    sampleProject.upvotes = this.votes[projectId].count;
+                }
+
+                return { success: true, newCount: this.votes[projectId].count };
+            }
+
+            getProjectVotes(projectId) {
+                return this.votes[projectId] ? this.votes[projectId].count : 0;
+            }
+
+            hasUserVoted(projectId) {
+                const projectVotes = this.votes[projectId];
+                return projectVotes && projectVotes.voters.includes(this.userFingerprint);
+            }
+        }
+
+        // Initialize voting system
+        const votingSystem = new VotingSystem();
+
         //Store all the unique tags
         const allTagSet = new Set();
         sampleProjects.forEach(project => {
@@ -111,6 +191,7 @@ const sampleProjects = [
         const projectsContainer = document.getElementById('projects-container');
         const loadingElement = document.getElementById('loading');
         const emptyStateElement = document.getElementById('empty-state');
+        const sortByFilter = document.getElementById('sort-by');
         const difficultyFilter = document.getElementById('difficulty');
         const hasDemoFilter = document.getElementById('has-demo');
         const applyFiltersBtn = document.getElementById('apply-filters');
@@ -147,6 +228,7 @@ const sampleProjects = [
         function setupEventListeners() {
             applyFiltersBtn.addEventListener('click', applyFilters);
             resetFiltersBtn.addEventListener('click', resetFilters);
+            sortByFilter.addEventListener('change', applyFilters);
             
             // Search functionality
             searchInput.addEventListener('input', handleSearch);
@@ -191,11 +273,43 @@ const sampleProjects = [
                 return;
             }
 
+            // Sort projects based on selected option
+            const sortBy = sortByFilter.value;
+            const sortedProjects = [...projects].sort((a, b) => {
+                switch (sortBy) {
+                    case 'popularity':
+                        const aVotes = votingSystem.getProjectVotes(a.id);
+                        const bVotes = votingSystem.getProjectVotes(b.id);
+                        return bVotes - aVotes;
+                    
+                    case 'newest':
+                        // Since we don't have dates, sort by ID (assuming higher ID = newer)
+                        return b.id - a.id;
+                    
+                    case 'difficulty':
+                        const difficultyOrder = { 'beginner': 1, 'intermediate': 2, 'advanced': 3 };
+                        return difficultyOrder[a.difficulty] - difficultyOrder[b.difficulty];
+                    
+                    case 'alphabetical':
+                        return a.title.localeCompare(b.title);
+                    
+                    default:
+                        return 0;
+                }
+            });
+
             emptyStateElement.style.display = 'none';
             projectsContainer.style.display = 'grid';
             
-            projectsContainer.innerHTML = projects.map(project => `
-                <div class="project-card">
+            projectsContainer.innerHTML = sortedProjects.map((project, index) => {
+                const hasVoted = votingSystem.hasUserVoted(project.id);
+                const canVote = votingSystem.canUserVote(project.id);
+                const voteCount = votingSystem.getProjectVotes(project.id);
+                const isTopRanked = sortBy === 'popularity' && index < 3 && voteCount > 0;
+                
+                return `
+                <div class="project-card ${isTopRanked ? 'top-ranked' : ''}">
+                    ${isTopRanked ? `<div class="rank-badge">#${index + 1}</div>` : ''}
                     ${project.previewImage 
                         ? `<img src="${project.previewImage}" alt="${project.title}" class="project-image" 
                              onerror="this.outerHTML='<div class=\\'project-placeholder\\'>No Preview Available</div>'">` 
@@ -239,30 +353,78 @@ const sampleProjects = [
                                </a>`
                             : '<span></span>'
                         }
-                        <button class="upvote-btn" onclick="handleUpvote(${project.id})">
+                        <button class="upvote-btn ${hasVoted ? 'voted' : ''}" 
+                                onclick="handleUpvote(${project.id})" 
+                                ${!canVote ? 'disabled' : ''}
+                                title="${hasVoted ? 'You have already voted for this project' : 'Click to upvote this project'}">
                             <i class="fas fa-arrow-up"></i>
-                            <span>${project.upvotes}</span>
+                            <span>${voteCount}</span>
                         </button>
                     </div>
                 </div>
-            `).join('');
+            `;
+            }).join('');
         }
 
         // Handle upvote
         function handleUpvote(projectId) {
-            const project = currentProjects.find(p => p.id === projectId);
-            if (project) {
-                project.upvotes++;
-                // Re-render projects to update the upvote count
-                renderProjects(applyCurrentFilters());
-                
-                // Add visual feedback
-                const button = event.target.closest('.upvote-btn');
-                button.style.transform = 'scale(1.1)';
+            const result = votingSystem.upvoteProject(projectId);
+            
+            if (!result.success) {
+                // Show error message
+                showNotification(result.message, 'error');
+                return;
+            }
+
+            // Show success message
+            showNotification('Vote added successfully!', 'success');
+            
+            // Re-render projects to update the upvote count and sorting
+            renderProjects(applyCurrentFilters());
+            
+            // Add visual feedback
+            const button = event.target.closest('.upvote-btn');
+            if (button) {
+                button.style.transform = 'scale(1.2)';
                 setTimeout(() => {
                     button.style.transform = 'scale(1)';
-                }, 150);
+                }, 200);
             }
+        }
+
+        // Show notification function
+        function showNotification(message, type = 'info') {
+            // Remove existing notifications
+            const existingNotification = document.querySelector('.vote-notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `vote-notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            // Add to body
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 3000);
         }
 
         // Apply filters
@@ -336,6 +498,7 @@ const sampleProjects = [
 
         // Reset filters
         function resetFilters() {
+            sortByFilter.value = 'popularity';
             difficultyFilter.value = 'all';
             hasDemoFilter.checked = false;
             searchInput.value = '';
@@ -360,27 +523,41 @@ const sampleProjects = [
                 alert("Please fill in all fields.");
                 return false;
             }
+            if (name.length < 4) {
+                alert("First Name must be at least 4 letters.");
+                return false;
+            }
+            if (lastname.length < 4) {
+                alert("Last Name must be at least 4 letters.");
+                return false;
+            }
             const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
             if (!email.match(emailPattern)) {
                 alert("Please enter a valid email.");
                 return false;
             }
+            // Message must have at least 3 words
+            const wordCount = message.split(/\s+/).filter(Boolean).length;
+            if (wordCount < 3) {
+                alert("Message must be at least 3 words.");
+                return false;
+            }
 
-                // Show the overlay
-                const overlay = document.getElementById("message-overlay");
-                overlay.style.opacity = "1";
-                overlay.style.pointerEvents = "auto";
+            // Show the overlay
+            const overlay = document.getElementById("message-overlay");
+            overlay.style.opacity = "1";
+            overlay.style.pointerEvents = "auto";
 
-                // Hide the overlay after 3 seconds
-                setTimeout(() => {
-                    overlay.style.opacity = "0";
-                    overlay.style.pointerEvents = "none";
-                }, 3000);
+            // Hide the overlay after 3 seconds
+            setTimeout(() => {
+                overlay.style.opacity = "0";
+                overlay.style.pointerEvents = "none";
+            }, 3000);
 
-                // Clear form
-                document.getElementById("contact-form").reset();
+            // Clear form
+            document.getElementById("contact-form").reset();
 
-                return false; // Prevent actual form submission
+            return false; // Prevent actual form submission
         }
 
             const toggle = document.getElementById('darkModeToggle');
