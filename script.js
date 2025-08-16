@@ -19,7 +19,7 @@ const sampleProjects = [
     title: 'Weather Dashboard',
     description: 'A responsive weather application with beautiful animations and detailed forecasts. Features location-based weather data and interactive charts.',
     repoUrl: 'https://github.com/Shivin1016/weatherApp',
-    demoUrl: 'shivin1016.github.io/weatherApp/',
+    demoUrl: 'https://shivin1016.github.io/weatherApp/',
     difficulty: 'intermediate',
     upvotes: 28,
     hasDemo: true,
