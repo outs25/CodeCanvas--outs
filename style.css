@@ -1281,7 +1281,7 @@ body.dark-theme textarea,
 body.dark-theme button,
 body.dark-theme .projects-container,
 body.dark-theme .filter-container {
-  color: #ffffff !important;
+  
   border-color: #ffffff;
 }
 
