@@ -25,7 +25,7 @@ const sampleProjects = [
     hasDemo: true,
     hasReadme: true,
     previewImage: "assets/weatherPreview.png",
-    tags: ['JavaScript','HTML', 'CSS', "API'S"]
+    tags: ['JavaScript','HTML', 'CSS', "API"]
   },
   {
     id: 3,
