@@ -206,17 +206,29 @@
             margin-left: auto;
             margin-right: auto;
         }
-
-        /* Filter section */
-  /* ---------- FILTERS SECTION ---------- */
+/* Light mode filters section */
 .filters {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
+  background: inherit; /* same as page background */
+  backdrop-filter: blur(14px);
   border-radius: 16px;
   padding: 25px;
   margin-top: 60px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.7); /* glowing white border */
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.6); /* white glow */
 }
+
+/* Dark mode filters section */
+.dark-theme .filters {
+  background: inherit;
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 25px;
+  margin-top: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.75); /* stronger white glow */
+}
+
+
 
 .filters h2 {
   font-size: 1.5rem;
