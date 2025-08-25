@@ -91,7 +91,21 @@ const sampleProjects = [
     hasReadme: true,
     previewImage: 'assets/GeneratePassword.png',
     tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
-  }
+  },
+  {
+  id: 8,
+  title: 'Unit Converter',
+  description: 'A simple and responsive unit converter that allows users to convert between length, weight, and temperature with real-time results.',
+  repoUrl: 'https://github.com/Bhavya0420/UnitConverter',
+  demoUrl: 'https://bhavya0420.github.io/UnitConverter/',
+  difficulty: 'intermediate',
+  upvotes: 20,
+  hasDemo: true,
+  hasReadme: true,
+  previewImage: 'assets/UnitConverter.png',
+  tags: ['HTML', 'CSS', 'JavaScript', 'Responsive']
+}
+
 ];
 
 
